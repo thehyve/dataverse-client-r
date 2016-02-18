@@ -102,6 +102,7 @@ api_url <- function(server, prefix="api/") {
     } else {
         domain <- paste0(server$domain, ":", server$port)
     }
-    url <- paste0("https://", domain, "/", prefix)
+    scheme <- if(server$scheme == "") "https" else server$scheme
+    url <- paste0(scheme, "://", domain, "/", prefix)
     return(url)
 }
